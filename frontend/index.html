@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Honest Reviews</title>
+
+  <script defer type="text/javascript" src="src/api.js"></script>
+  <script defer type="text/javascript" src="src/index.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <div id='product-header'>
+    <img src="https://serving.photos.photobox.com/5296737823d53a232645fd3e963973fa4d99d087e3dfc59fdc103e68c96b3c6b930dcd1a.jpg" alt="product-header">
+    <p><button id='new-product-btn'>Add a new product</button></p>
+  </div>
+
+  <div class="container">
+    <form class="add-product-form" style="">
+      <h3>Create a product!</h3>
+
+      <input type="text" name="url" value="" placeholder="Enter a product's image URL" class="input-text">
+      <br>
+      <input type="text" name="name" value="" placeholder="Enter a product's name" class="input-text">
+      <br>
+      <input type="text" name="description" value="" placeholder="Enter a product's description" class="input-text">
+      <br>
+      <input id="submitit" type="submit" name="submit" value="Create new product" class="submit">
+    </form>
+  </div>
+
+
+  <div id="product-collection">
+    <ul id="list">
+
+    </ul>
+  </div>
+
+<script>
+
+</script>
+
+</body>
+
+</html>
