@@ -22036,3 +22036,1292 @@ Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 1.4ms)
 
   [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/products/" for ::1 at 2019-04-16 21:19:59 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.74ms)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 21:20:11 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"ok", "product_id"=>2, "review"=>{"content"=>"ok", "product_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (1.7ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "ok"], ["product_id", 2], ["created_at", "2019-04-16 20:20:11.410235"], ["updated_at", "2019-04-16 20:20:11.410235"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 21:20:22 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.06ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 21:20:25 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"", "product_id"=>1, "review"=>{"content"=>"", "product_id"=>1}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 400 Bad Request in 7ms (Views: 0.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 21:20:28 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.94ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 21:20:31 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"", "product_id"=>36, "review"=>{"content"=>"", "product_id"=>36}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 400 Bad Request in 9ms (Views: 1.1ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 21:20:33 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"good", "product_id"=>36, "review"=>{"content"=>"good", "product_id"=>36}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (1.0ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "good"], ["product_id", 36], ["created_at", "2019-04-16 20:20:33.071229"], ["updated_at", "2019-04-16 20:20:33.071229"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 21:20:35 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"", "product_id"=>36, "review"=>{"content"=>"", "product_id"=>36}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 400 Bad Request in 10ms (Views: 0.5ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 21:20:37 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"", "product_id"=>36, "review"=>{"content"=>"", "product_id"=>36}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 400 Bad Request in 9ms (Views: 0.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 21:20:45 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.69ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/reviews" for ::1 at 2019-04-16 21:29:01 +0100
+Processing by ReviewsController#index as HTML
+  [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.01ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/reviews/1" for ::1 at 2019-04-16 21:29:03 +0100
+Processing by ReviewsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:9
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 404 Not Found in 5ms (Views: 0.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/reviews/2" for ::1 at 2019-04-16 21:29:07 +0100
+Processing by ReviewsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:9
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/reviews/3" for ::1 at 2019-04-16 21:29:10 +0100
+Processing by ReviewsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:9
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:08:46 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (2.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.03ms)
+Completed 200 OK in 13ms (Views: 8.1ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:08:47 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.1ms)
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:08:50 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.78ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:08:54 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.0ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:10:38 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.22ms)
+Completed 200 OK in 13ms (Views: 9.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:12:08 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.89ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:12:11 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.65ms)
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:13:30 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (19.67ms)
+Completed 200 OK in 22ms (Views: 20.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:13:34 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.93ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:14:55 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.02ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 2.0ms)
+
+
+Started PATCH "/products/1" for ::1 at 2019-04-16 22:15:12 +0100
+Processing by ProductsController#update as */*
+  Parameters: {"id"=>"1", "url"=>"https://serving.photos.photobox.com/31300841a41cfe71fb9b78225efd37995ec4027bb3214835139c43743624d5960d64266a.jpg", "name"=>"Unicorn Egg", "description"=>"Get Hatching - Looking to become a parent to a beautiful unicorn?", "likes"=>5, "reviews"=>[{"id"=>2, "content"=>"I love it!", "product_id"=>1, "created_at"=>"2019-04-15T15:37:46.617Z", "updated_at"=>"2019-04-15T15:37:46.617Z", "username"=>nil}, {"id"=>3, "content"=>"Excellent Quality.", "product_id"=>1, "created_at"=>"2019-04-15T15:38:24.912Z", "updated_at"=>"2019-04-15T15:38:24.912Z", "username"=>nil}], "product"=>{"id"=>"1", "url"=>"https://serving.photos.photobox.com/31300841a41cfe71fb9b78225efd37995ec4027bb3214835139c43743624d5960d64266a.jpg", "name"=>"Unicorn Egg", "description"=>"Get Hatching - Looking to become a parent to a beautiful unicorn?", "likes"=>5}}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[36mProduct Update (1.0ms)[0m  [1m[33mUPDATE "products" SET "likes" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["likes", 5], ["updated_at", "2019-04-16 21:15:12.353442"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:33
+[active_model_serializers]   [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:34
+[active_model_serializers] Rendered ProductSerializer with ActiveModelSerializers::Adapter::Attributes (1.62ms)
+Completed 200 OK in 13ms (Views: 1.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:15:14 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.05ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:15:18 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.42ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:15:35 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.26ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:15:39 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.65ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:29:54 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.34ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:32:30 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (15.5ms)
+Completed 200 OK in 19ms (Views: 15.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:33:09 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.17ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:33:56 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.09ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:35:08 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.22ms)
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:35:47 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.91ms)
+Completed 200 OK in 17ms (Views: 13.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:36:13 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.84ms)
+Completed 200 OK in 14ms (Views: 10.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:36:30 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.98ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 2.4ms)
+
+
+Started PATCH "/products/2" for ::1 at 2019-04-16 22:36:55 +0100
+Processing by ProductsController#update as */*
+  Parameters: {"id"=>"2", "url"=>"https://serving.photos.photobox.com/9601955992626aef4d7446428b28cd103ba1eda2e2f8d1340104e7855f93f94635162e20.jpg", "name"=>"Plasma In a Jar", "description"=>"Plasma", "likes"=>5, "reviews"=>[{"id"=>8, "content"=>"Awesome!", "product_id"=>2, "created_at"=>"2019-04-16T14:26:47.769Z", "updated_at"=>"2019-04-16T14:26:47.769Z", "username"=>nil}, {"id"=>9, "content"=>"Awesome!", "product_id"=>2, "created_at"=>"2019-04-16T14:55:00.762Z", "updated_at"=>"2019-04-16T14:55:00.762Z", "username"=>nil}, {"id"=>28, "content"=>"hi", "product_id"=>2, "created_at"=>"2019-04-16T17:49:32.620Z", "updated_at"=>"2019-04-16T17:49:32.620Z", "username"=>nil}, {"id"=>29, "content"=>"gfgtf", "product_id"=>2, "created_at"=>"2019-04-16T18:02:46.277Z", "updated_at"=>"2019-04-16T18:02:46.277Z", "username"=>nil}, {"id"=>31, "content"=>"ok", "product_id"=>2, "created_at"=>"2019-04-16T20:20:11.410Z", "updated_at"=>"2019-04-16T20:20:11.410Z", "username"=>nil}], "product"=>{"id"=>"2", "url"=>"https://serving.photos.photobox.com/9601955992626aef4d7446428b28cd103ba1eda2e2f8d1340104e7855f93f94635162e20.jpg", "name"=>"Plasma In a Jar", "description"=>"Plasma", "likes"=>5}}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[36mProduct Update (0.5ms)[0m  [1m[33mUPDATE "products" SET "likes" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["likes", 5], ["updated_at", "2019-04-16 21:36:55.279519"], ["id", 2]]
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:33
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:34
+[active_model_serializers] Rendered ProductSerializer with ActiveModelSerializers::Adapter::Attributes (2.07ms)
+Completed 200 OK in 18ms (Views: 2.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:36:59 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.89ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-16 22:37:11 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Amazeballs", "product_id"=>1, "review"=>{"content"=>"Amazeballs", "product_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (1.4ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Amazeballs"], ["product_id", 1], ["created_at", "2019-04-16 21:37:11.756656"], ["updated_at", "2019-04-16 21:37:11.756656"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:37:14 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.61ms)
+Completed 200 OK in 15ms (Views: 10.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:37:45 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.07ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:38:50 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (5.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (2.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (16.96ms)
+Completed 200 OK in 25ms (Views: 13.8ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:39:07 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.78ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:42:11 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.92ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:43:08 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.81ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:43:48 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.68ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:44:31 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.85ms)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:44:50 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.05ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:44:59 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.91ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:45:05 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.91ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:45:14 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.82ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:47:00 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.13ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:47:38 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.95ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-16 22:48:46 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.98ms)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:15:52 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (16.24ms)
+Completed 200 OK in 113ms (Views: 107.2ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:16:18 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Didn't last long.....", "product_id"=>2, "review"=>{"content"=>"Didn't last long.....", "product_id"=>2}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (5.5ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Didn't last long....."], ["product_id", 2], ["created_at", "2019-04-17 08:16:18.877131"], ["updated_at", "2019-04-17 08:16:18.877131"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 20ms (Views: 1.0ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:16:33 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.75ms)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:16:36 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.4ms)
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:16:46 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Hello", "product_id"=>2, "review"=>{"content"=>"Hello", "product_id"=>2}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Hello"], ["product_id", 2], ["created_at", "2019-04-17 08:16:46.508941"], ["updated_at", "2019-04-17 08:16:46.508941"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:16:50 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.37ms)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 1.7ms)
+
+
+Started PATCH "/products/2" for ::1 at 2019-04-17 09:16:59 +0100
+Processing by ProductsController#update as */*
+  Parameters: {"id"=>"2", "url"=>"https://serving.photos.photobox.com/9601955992626aef4d7446428b28cd103ba1eda2e2f8d1340104e7855f93f94635162e20.jpg", "name"=>"Plasma In a Jar", "description"=>"Plasma", "likes"=>6, "reviews"=>[{"id"=>8, "content"=>"Awesome!", "product_id"=>2, "created_at"=>"2019-04-16T14:26:47.769Z", "updated_at"=>"2019-04-16T14:26:47.769Z", "username"=>nil}, {"id"=>9, "content"=>"Awesome!", "product_id"=>2, "created_at"=>"2019-04-16T14:55:00.762Z", "updated_at"=>"2019-04-16T14:55:00.762Z", "username"=>nil}, {"id"=>28, "content"=>"hi", "product_id"=>2, "created_at"=>"2019-04-16T17:49:32.620Z", "updated_at"=>"2019-04-16T17:49:32.620Z", "username"=>nil}, {"id"=>29, "content"=>"gfgtf", "product_id"=>2, "created_at"=>"2019-04-16T18:02:46.277Z", "updated_at"=>"2019-04-16T18:02:46.277Z", "username"=>nil}, {"id"=>31, "content"=>"ok", "product_id"=>2, "created_at"=>"2019-04-16T20:20:11.410Z", "updated_at"=>"2019-04-16T20:20:11.410Z", "username"=>nil}, {"id"=>34, "content"=>"Didn't last long.....", "product_id"=>2, "created_at"=>"2019-04-17T08:16:18.877Z", "updated_at"=>"2019-04-17T08:16:18.877Z", "username"=>nil}, {"id"=>35, "content"=>"Hello", "product_id"=>2, "created_at"=>"2019-04-17T08:16:46.508Z", "updated_at"=>"2019-04-17T08:16:46.508Z", "username"=>nil}], "product"=>{"id"=>"2", "url"=>"https://serving.photos.photobox.com/9601955992626aef4d7446428b28cd103ba1eda2e2f8d1340104e7855f93f94635162e20.jpg", "name"=>"Plasma In a Jar", "description"=>"Plasma", "likes"=>6}}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[36mProduct Update (0.8ms)[0m  [1m[33mUPDATE "products" SET "likes" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["likes", 6], ["updated_at", "2019-04-17 08:16:59.822190"], ["id", 2]]
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:33
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:34
+[active_model_serializers] Rendered ProductSerializer with ActiveModelSerializers::Adapter::Attributes (3.05ms)
+Completed 200 OK in 13ms (Views: 3.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:17:01 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.82ms)
+Completed 200 OK in 14ms (Views: 11.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:17:15 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Ok", "product_id"=>36, "review"=>{"content"=>"Ok", "product_id"=>36}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Ok"], ["product_id", 36], ["created_at", "2019-04-17 08:17:15.830108"], ["updated_at", "2019-04-17 08:17:15.830108"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:17:35 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.02ms)
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:17:40 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"lo", "product_id"=>36, "review"=>{"content"=>"lo", "product_id"=>36}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "lo"], ["product_id", 36], ["created_at", "2019-04-17 08:17:40.515127"], ["updated_at", "2019-04-17 08:17:40.515127"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:17:44 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.26ms)
+Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:18:17 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.47ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:18:28 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Broken", "product_id"=>1, "review"=>{"content"=>"Broken", "product_id"=>1}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Broken"], ["product_id", 1], ["created_at", "2019-04-17 08:18:28.774755"], ["updated_at", "2019-04-17 08:18:28.774755"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 9ms (Views: 0.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:18:33 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.82ms)
+Completed 200 OK in 44ms (Views: 41.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:19:30 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.04ms)
+Completed 200 OK in 17ms (Views: 13.7ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:19:34 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"ok", "product_id"=>1, "review"=>{"content"=>"ok", "product_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "ok"], ["product_id", 1], ["created_at", "2019-04-17 08:19:34.466232"], ["updated_at", "2019-04-17 08:19:34.466232"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:20:04 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Arrived broken!!!!!", "product_id"=>1, "review"=>{"content"=>"Arrived broken!!!!!", "product_id"=>1}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Arrived broken!!!!!"], ["product_id", 1], ["created_at", "2019-04-17 08:20:04.160966"], ["updated_at", "2019-04-17 08:20:04.160966"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:20:10 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.93ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:20:21 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.1ms)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:20:34 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.13ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:21:18 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Hi great looks fantastic and could be waterproof but haven't tested it in the rain yet lol.", "product_id"=>36, "review"=>{"content"=>"Hi great looks fantastic and could be waterproof but haven't tested it in the rain yet lol.", "product_id"=>36}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Hi great looks fantastic and could be waterproof but haven't tested it in the rain yet lol."], ["product_id", 36], ["created_at", "2019-04-17 08:21:18.077085"], ["updated_at", "2019-04-17 08:21:18.077085"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:21:26 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.31ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:21:55 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.3ms)
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:22:20 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.34ms)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 1.8ms)
+
+
+Started PATCH "/products/36" for ::1 at 2019-04-17 09:22:43 +0100
+Processing by ProductsController#update as */*
+  Parameters: {"id"=>"36", "url"=>"https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/53/2016/12/rLFAla-1.gif", "name"=>"Radioactive Fairy Blood", "description"=>"Fairy", "likes"=>2, "reviews"=>[{"id"=>30, "content"=>"Amazing", "product_id"=>36, "created_at"=>"2019-04-16T18:42:39.060Z", "updated_at"=>"2019-04-16T18:42:39.060Z", "username"=>nil}, {"id"=>32, "content"=>"good", "product_id"=>36, "created_at"=>"2019-04-16T20:20:33.071Z", "updated_at"=>"2019-04-16T20:20:33.071Z", "username"=>nil}, {"id"=>36, "content"=>"Ok", "product_id"=>36, "created_at"=>"2019-04-17T08:17:15.830Z", "updated_at"=>"2019-04-17T08:17:15.830Z", "username"=>nil}, {"id"=>37, "content"=>"lo", "product_id"=>36, "created_at"=>"2019-04-17T08:17:40.515Z", "updated_at"=>"2019-04-17T08:17:40.515Z", "username"=>nil}, {"id"=>41, "content"=>"Hi great looks fantastic and could be waterproof but haven't tested it in the rain yet lol.", "product_id"=>36, "created_at"=>"2019-04-17T08:21:18.077Z", "updated_at"=>"2019-04-17T08:21:18.077Z", "username"=>nil}], "product"=>{"id"=>"36", "url"=>"https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/53/2016/12/rLFAla-1.gif", "name"=>"Radioactive Fairy Blood", "description"=>"Fairy", "likes"=>2}}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[36mProduct Update (2.1ms)[0m  [1m[33mUPDATE "products" SET "likes" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["likes", 2], ["updated_at", "2019-04-17 08:22:43.179800"], ["id", 36]]
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:33
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:34
+[active_model_serializers] Rendered ProductSerializer with ActiveModelSerializers::Adapter::Attributes (2.64ms)
+Completed 200 OK in 12ms (Views: 2.8ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/reviews" for ::1 at 2019-04-17 09:22:52 +0100
+Processing by ReviewsController#create as */*
+  Parameters: {"content"=>"Just ok", "product_id"=>36, "review"=>{"content"=>"Just ok", "product_id"=>36}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[36mReview Create (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("content", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Just ok"], ["product_id", 36], ["created_at", "2019-04-17 08:22:52.429365"], ["updated_at", "2019-04-17 08:22:52.429365"]]
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:24
+[active_model_serializers] Rendered ReviewSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:23:52 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.33ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:24:19 +0100
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.66ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/reviews" for ::1 at 2019-04-17 09:24:48 +0100
+Processing by ReviewsController#index as HTML
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.08ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/reviews" for ::1 at 2019-04-17 09:24:52 +0100
+Processing by ReviewsController#index as HTML
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.63ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products/" for ::1 at 2019-04-17 09:24:59 +0100
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 1]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 2]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers]   [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."product_id" = $1[0m  [["product_id", 36]]
+[active_model_serializers]   ↳ app/controllers/products_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.5ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 1.9ms)
+
+

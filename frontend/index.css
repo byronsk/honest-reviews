@@ -108,7 +108,23 @@ h2 {
 }
 
 #h2tag {
+  font-size: 28px;
 }
 
 #imgtag {
+  width: 400px;
+  height: 400px;
+}
+
+#destag {
+  font-size: 20px;
+}
+
+#frm1 {
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+#co-list {
+  font-size: 18px;
 }
