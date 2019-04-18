@@ -25,11 +25,12 @@ body: JSON.stringify(product)
   }).then(response => response.json())
 }
 
-// function deleteProduct(product) {
-//   return fetch('http://localhost:3000/products/', {
-//     method: "DELETE",
-//   }).then(response => response.json())
-// }
+function deleteProduct(product) {
+  return fetch('http://localhost:3000/products' + `/${product.id}`, {
+    method: "DELETE",
+  }).then(resp => resp.json())
+}
+
 
 //Server for Reviews
 function createReview(review) {
@@ -45,5 +46,11 @@ function updateReview(review) {
     method: "PATCH",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(review)
-  }).then(res => resp.json())
+  }).then(resp => resp.json())
+}
+
+function deleteReview(id) {
+  return fetch('http://localhost:3000/reviews' + `/${id}`, {
+    method: "DELETE",
+  }).then(resp => resp.json())
 }

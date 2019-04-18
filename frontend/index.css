@@ -23,20 +23,20 @@ body {
 
 .card {
   text-align: center;
-  border: grey solid 1px;
+  border: #404040 solid 1px;
   padding: 1rem;
   width: 15rem;
   height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px #b7b7b7
+  box-shadow: 3px 4px #868686
 }
 
-.toy-avatar {
+/* .toy-avatar {
   justify-self: center;
   height: 12rem;
   width: auto;
-}
+} */
 
 button {
   position: relative;
@@ -127,4 +127,8 @@ h2 {
 
 #co-list {
   font-size: 18px;
+}
+
+.edit {
+  margin: 5px;
 }

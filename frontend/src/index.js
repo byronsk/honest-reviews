@@ -36,13 +36,26 @@ getProducts()
                       <img src="${product.url}" height=240 width=240>
                       <!-- <p>{product.likes} Likes</p> -->
                       <button class="view" id="view">View More</button>
+                      <button class="delete" id="delete">Delete</button>
                     `
         newCard.querySelector('button').addEventListener('click', () => renderSingleProduct(product))
         document.querySelector('#product-collection').append(newCard)
       // })
 
     // )
+
+    const d = newCard.querySelector('.delete')
+    d.addEventListener('click', (event) => {
+      event.target.className == 'delete'
+      deleteProduct(product)
+      event.target.parentElement.remove()
+    })
+
+
   }
+
+
+
     //Event Listener for Adding a New Product
     submitbttn.addEventListener('click', (event) => {
       event.preventDefault();
@@ -58,11 +71,6 @@ getProducts()
       oForm.reset()
     })
 
-// document.addEventListener('DOMContentLoaded', () => {
-//
-// addProducts()
-//
-// })
 
 // Rendering Single Product Page
 function renderSingleProduct(product) {
@@ -75,6 +83,7 @@ function renderSingleProduct(product) {
      <p id="destag">Product Description:
      <br>
      ${product.description}</p>
+     <button class = "edit" id=${product.id}>Edit Product</button>
      <p class="likes">${product.likes} Likes</p>
      <button class="like" id="like">Like</button>
      <form class="com" id="frm1">
@@ -85,13 +94,57 @@ function renderSingleProduct(product) {
      <div id="review-collection">
        <ul id="co-list">
         ${product.reviews.map(review => {
-          return (`<li>${review.content}</li>`)
+          return (`<li id="data-review-${review.id}">
+            ${review.content}
+            <button id="${review.id}" class="delete">Delete</button>
+            </li>`)
         }).join('')}
        </ul>
-     </div>
 
-     <!-- <p>{product.reviews[0].content}</p> -->
-                       `
+     </div>
+     `
+
+     const button = productsEl.querySelector('.delete')
+     button.addEventListener('click', (event) => {
+       const id = event.target.id
+         deleteReview(id)
+         event.target.parentElement.remove()
+      })
+
+    //Edit Form
+    const edit = document.querySelector('.edit')
+    edit.addEventListener('click', () => {
+      productsEl.innerHTML = ' '
+      const updateForm = document.createElement('form')
+      updateForm.id = "update-form"
+      updateForm.innerHTML =
+      `
+      <input type="text" name="url" required value="${product.url}"/>
+      <input type="text" name="name" required value="${product.name}"/>
+      <input type="text" name="description" required value="${product.description}"/>
+      <input type="hidden" name="likes" required value="${product.likes}"/>
+      <input type="submit" id="update" value="Update"/>
+      `
+      productsEl.appendChild(updateForm)
+
+      const update = productsEl.querySelector('#update-form')
+      update.addEventListener('submit', (event) => {
+        event.preventDefault()
+        newProduct = {
+          id: product.id,
+          name: update.name.value,
+          description: update.description.value,
+          likes: product.likes
+        }
+        updateProduct(newProduct)
+        .then(productsEl.innerHTML = `<h1>Product updated!</h1>`)
+      })
+    })
+
+
+     // coll = productsEl.querySelectorAll('.delete').addEventListener('click', () =>
+     // coll.forEach(() => deleteEvent())
+
        //Like Button
        const likeBtn = productsEl.querySelector('.like')
        const likeEl = productsEl.querySelector('.likes')
@@ -100,6 +153,8 @@ function renderSingleProduct(product) {
        updateProduct(product)
        .then(() => { likeEl.innerHTML = ` ${product.likes} Likes`} )
        })
+
+
 
        //Appending Reviews
        const form1El = document.querySelector('#frm1')
@@ -115,14 +170,6 @@ function renderSingleProduct(product) {
 
      }
 
-     // function addAllReviews(review) {
-     //   const reviewList = document.querySelector('ul')
-     //   product.reviews.forEach(review => {
-     //   review.innerHTML += `<li>${review.content}</li>`;
-     // })
-     //
-     // }
-
      //Creating New Review
      form1El.addEventListener('submit', (event) => {
        event.preventDefault()
@@ -137,6 +184,11 @@ function renderSingleProduct(product) {
      })
 
   }
+
+//   function deleteEvent() {
+  // const delBtn = document.getElementById('delete')
+
+// }
 
 //Hide Add Product Form
 addBtn.addEventListener('click', () => {

@@ -28,9 +28,30 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # def edit
+  #   review = Review.find_by(id: params[:id])
+  # end
+
+  def update
+    review = Review.find_by(id: params[:id])
+    review.update(review_params)
+    if review
+      review.save
+      render json: review
+    else
+      render json: {error: "Review not updated."}, status: 451
+    end
+  end
+
+  def destroy
+    review = Review.find_by(id: params[:id]).destroy
+  end
+
+
   private
 
   def review_params
     params.require(:review).permit(:content, :product_id)
   end
+
 end
