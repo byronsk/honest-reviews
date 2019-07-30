@@ -1,24 +1,9 @@
-# README
+*Honest Reviews*
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mod 4 Project - Flatiron School
 
-Things you may want to cover:
+A website for reviewing products.
 
-* Ruby version
+Backend - Ruby on Rails
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Frontend - Vanilla JS
